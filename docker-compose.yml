@@ -1,0 +1,36 @@
+version: "3"
+services:
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'femr'
+      MYSQL_USER: 'femr'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3310:3306'
+    expose:
+      - '3310'
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./mysql:/etc/mysql/conf.d
+    command: ["mysqld", "--log-bin=mysql-bin", "--server_id=1"]
+
+  maxwell:
+    image: zendesk/maxwell
+    depends_on: 
+      - db
+    command: ["bin/maxwell", "--user=maxwell", "--password=secret", "--host=db", "--port=3306", "--producer=stdout"]
+
+  # femr:
+  #   build: ./femr
+  #   depends_on: 
+  #     - db
+  #     - maxwell
+  #   command: ["/bin/bash"]
+  #   tty: true
+
+volumes:
+  db-data:
