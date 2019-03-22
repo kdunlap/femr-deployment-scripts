@@ -14,8 +14,7 @@
 ### Run sample Ubuntu Setup
 
 build server
-`docker build --no-cache -t femr ./server/`
+`docker build --no-cache -t femr ./femr-server/`
 
-run container
-`docker run -it --rm -v "$PWD":/home/femrapp -w /home/femrapp -u femrapp femr bash`
-
+run container - OSX
+`docker run -it --rm -v "${PWD}":/home/femrapp -w /home/femrapp -u femrapp femr bash`

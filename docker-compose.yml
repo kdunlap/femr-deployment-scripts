@@ -5,7 +5,7 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_DATABASE: 'femr'
+      MYSQL_DATABASE: 'femr_db'
       MYSQL_USER: 'femr'
       MYSQL_PASSWORD: 'password'
       MYSQL_ROOT_PASSWORD: 'password'
@@ -24,13 +24,17 @@ services:
       - db
     command: ["bin/maxwell", "--user=maxwell", "--password=secret", "--host=db", "--port=3306", "--producer=stdout"]
 
-  # femr:
-  #   build: ./femr
-  #   depends_on: 
-  #     - db
-  #     - maxwell
-  #   command: ["/bin/bash"]
-  #   tty: true
+  femr:
+    build: ./femr
+    depends_on: 
+      - db
+      - maxwell
+    ports:
+      - '9000:80'
+    expose: 
+      - '9000'
+    volumes:
+      - ./femr/conf:/home/femrapp/conf
 
 volumes:
   db-data:
