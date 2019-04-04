@@ -12,15 +12,15 @@
 # By default this script does nothing.
 
 #not using port 80 for http, use port 8081
-iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 8081
+iptables -t nat -A PREROUTING -p tcp --dport 9000 -j REDIRECT --to 8081
 
-FILE=/home/femrapp/fEMR/femr-2.2/RUNNING_PID
+FILE=/home/femrapp/fEMR/femr-2.3.8/RUNNING_PID
 
 if [ -f $FILE ]
 	then
 		rm $FILE
 fi
 
-/home/femrapp/App/femr-2.3.0/bin/femr -Dconfig.file=/home/femrapp/App/prod.conf -Dhttp.port=8081
+/home/femrapp/App/femr-2.3.8/bin/femr -Dconfig.file=/home/femrapp/conf/prod.conf -Dhttp.port=8081
 
 exit 0

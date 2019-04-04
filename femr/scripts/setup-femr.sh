@@ -23,3 +23,6 @@ cd ~/Git \
     && mkdir ./femr-2.3.8/Upload \
     && mkdir ./femr-2.3.8/Upload/CSV \
     && cp ./femr-2.3.8/conf/application.conf ~/App/prod.conf \
+
+## Add rc.local file stuff
+# head -c 32 /dev/urandom | base64

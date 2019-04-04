@@ -2,9 +2,10 @@
 
 - [x] MySQL add user for Maxwell and fEMR (install.sql)
 - [x] Add container for fEMR - pull down latest version and build
-- [ ] Setup fEMR to run and be able to visit via browser 
-    - [ ] run initial migrations
+- [x] Setup fEMR to run and be able to visit via browser 
+    - [x] run initial migrations
     - [ ] import existing database
+    - [ ] control config in a secure centralized way
 - [ ] Make sure binlog file is writing reliably
 - [ ] Can we run maxwell after a trip as long as the binlog is enabled?
 - [ ] Write some test code to read the `json` output from Maxwell and insert into central DB

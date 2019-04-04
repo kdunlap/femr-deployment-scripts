@@ -15,6 +15,4 @@ RUN useradd femrapp && echo "femrapp:femrapp" | chpasswd && \
     && cd /home/femrapp/scripts \
     && su femrapp -c "/bin/bash ./install.sh"
     
-
 USER femrapp
-CMD /bin/bash
